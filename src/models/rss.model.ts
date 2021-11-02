@@ -1,8 +1,6 @@
-import { Rss } from '@interfaces/rss.interface';
-import { Feed } from "feed";
+import { Feed } from '@/interfaces/feed.interface';
 
-
-const rssModel: Rss = new Feed({
+const rssModel: Feed = new Feed({
   title: "Feed Title",
   description: "This is my personal feed!",
   id: "http://example.com/",

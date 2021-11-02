@@ -2,18 +2,19 @@ import { Router } from 'express';
 import RssController from '@controllers/rss.controller';
 import { Routes } from '@interfaces/routes.interface';
 
-class RssRoute implements Routes {
+class FeedRoute implements Routes {
   public path = '/';
   public router = Router();
-  public authController = new RssController();
+  public feedController = new RssController();
 
   constructor() {
     this.initializeRoutes();
   }
 
   private initializeRoutes() {
-    this.router.get(`${this.path}rss`, this.rssContrller.getRss)
+    this.router.get(`${this.path}feed/rss`, this.feedController.getRss)
+    this.router.post(`${this.path}feed/addItem`, this.feedController.addItem)
   }
 }
 
-export default RssRoute;
+export default FeedRoute;

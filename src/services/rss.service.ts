@@ -1,16 +1,22 @@
 import { HttpException } from '@exceptions/HttpException';
-import { Rss } from '@interfaces/rss.interface';
-import rssModel from '@models/rss.model';
+import { Feed } from '@/interfaces/feed.interface';
+import feedModel from '@models/rss.model';
 import { isEmpty } from '@utils/util';
 
-class RssService {
-  public rss = rssModel;
+class FeedService {
+  public feed: Feed = feedModel;
 
-  public async getRss(): Promise<Rss> {
-    const users: Rss[] = this.rss;
-    return users;
+
+
+  public async getRss(): Promise<Feed> {
+    const rss: string = this.feed.rss2();
+    return rss;
+  }
+
+  public async addItem(item: Item): void{
+    this.feed.addItem(item);
   }
 
 }
 
-export default RssService;
+export default FeedService;
